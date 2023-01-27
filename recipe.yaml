@@ -1,0 +1,105 @@
+$engine: 3
+$onesync: on
+name: RedEM-RP Framework
+version: 2013.01
+author: amakuu, Ktos, Kane, Sinatra
+description: A lightweight but robust framework for RedM RP servers!
+
+tasks:
+  #  Download Base Files
+  - action: download_github
+    src: https://github.com/RedEM-RP/txAdminRecipe
+    ref: main
+    dest: ./tmp/redemrp
+
+  - action: move_path
+    src: ./tmp/redemrp/server.cfg
+    dest: ./server.cfg
+
+  - action: move_path
+    src: ./tmp/redemrp/ServerLogo.png
+    dest: ./ServerLogo.png
+
+  # Prepare Database
+  - action: connect_database
+  - action: query_database
+    file: ./tmp/redemrp/redemrp.sql
+
+
+  # STANDALONE
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    subpath: resources
+    dest: ./resources/[cfx]
+
+  - action: download_file
+    path: ./tmp/files/oxmysql.zip
+    url: https://github.com/overextended/oxmysql/releases/download/v2.5.4/oxmysql.zip
+  - action: unzip
+    dest: ./resources/
+    src: ./tmp/files/oxmysql.zip
+
+  # Downloading RedEM-RP resources
+  - action: download_github
+    dest: ./resources/redem_roleplay
+    ref: master
+    src: https://github.com/RedEM-RP/redem_roleplay
+
+  - action: download_github
+    dest: ./resources/[REDEMRP]/redemrp_menu_base
+    ref: master
+    src: https://github.com/RedEM-RP/redemrp_menu_base
+
+  - action: download_github
+    dest: ./resources/[REDEMRP]/redemrp_creator
+    ref: main
+    src: https://github.com/RedEM-RP/redemrp_creator
+
+  - action: download_github
+    dest: ./resources/[REDEMRP]/redemrp_clothes_store
+    ref: main
+    src: https://github.com/RedEM-RP/redemrp_clothes_store
+
+  - action: download_github
+    dest: ./resources/[REDEMRP]/redemrp_charselect
+    ref: main
+    src: https://github.com/RedEM-RP/redemrp_charselect
+
+  - action: download_github
+    dest: ./resources/[REDEMRP]/redemrp_respawn
+    ref: master
+    src: https://github.com/RedEM-RP/redemrp_respawn
+
+  - action: download_github
+    dest: ./resources/[REDEMRP]/redemrp_inventory
+    ref: main
+    src: https://github.com/RedEM-RP/redemrp_inventory
+
+  - action: download_github
+    dest: ./resources/[REDEMRP]/redemrp_status
+    ref: main
+    src: https://github.com/RedEM-RP/redemrp_status
+
+  - action: download_github
+    dest: ./resources/[REDEMRP]/redemrp_banking
+    ref: main
+    src: https://github.com/RedEM-RP/redemrp_banking
+
+  - action: download_github
+    dest: ./resources/[REDEMRP]/redemrp_bossmenu
+    ref: main
+    src: https://github.com/RedEM-RP/redemrp_bossmenu
+
+  - action: download_github
+    dest: ./resources/[REDEMRP]/redemrp_progressbars
+    ref: main
+    src: https://github.com/RedEM-RP/redemrp_progressbars
+
+  - action: download_github
+    dest: ./resources/[REDEMRP]/redemrp_shops
+    ref: main
+    src: https://github.com/RedEM-RP/redemrp_shops
+
+  # Clean up
+  - action: remove_path
+    path: ./tmp
