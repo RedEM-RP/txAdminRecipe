@@ -1,8 +1,7 @@
 $engine: 3
 $onesync: on
-name: RedEM-RP Framework
-version: 2013.01
-author: amakuu, Ktos, Kane, Sinatra
+name: RedEMRP Framework
+author: amakuu & Ktos & Kane & Sinatra
 description: A lightweight but robust framework for RedM RP servers!
 
 tasks:
