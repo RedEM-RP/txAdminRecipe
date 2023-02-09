@@ -2,9 +2,9 @@ CREATE TABLE `characters` (
   `id` int(11) NOT NULL,
   `identifier` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `characterid` int(11) DEFAULT 0,
-  `citizenid` varchar(7) COLLATE utf8mb4_bin NOT NULL,
-  `money` int(11) DEFAULT 200,
-  `bank` int(11) NOT NULL,
+  `citizenid` varchar(10) COLLATE utf8mb4_bin NOT NULL,
+  `money` int(11) DEFAULT 0,
+  `bank` int(11) DEFAULT 0,
   `job` varchar(50) COLLATE utf8mb4_bin DEFAULT 'unemployed',
   `firstname` varchar(50) COLLATE utf8mb4_bin DEFAULT 'first',
   `lastname` varchar(50) COLLATE utf8mb4_bin DEFAULT 'last',
@@ -51,6 +51,19 @@ CREATE TABLE `user_inventory` (
   `charid` int(11) NOT NULL,
   `items` varchar(16000) COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+CREATE TABLE `permissions` (
+  `id` int(11) NOT NULL,
+  `identifier` varchar(32) NOT NULL,
+  `permissiongroup` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `permissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 ALTER TABLE `characters`
   ADD PRIMARY KEY (`id`);
